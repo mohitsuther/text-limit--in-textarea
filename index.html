@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+
+            margin: 0;
+            padding: 0;
+            margin-inline: auto;
+
+
+            background-repeat: no-repeat;
+        }
+        .box{
+            padding-top: 200px;
+            height: 100vh;
+            width: 100%;
+            background-color: rgb(27, 23, 23);
+        }
+
+        textarea {
+            display: flex;
+            position: relative;
+            border: none;
+            list-style: none;
+            width: 40%;
+            color: aliceblue;
+
+            border-radius:40px;
+            box-shadow: inset 10px 10px 44px rgb(0, 0, 0);
+            padding: 10px;
+            font-size: 25px;
+            background-color: rgb(139, 136, 131);
+        }
+
+        h1 {
+            font-size: 20px;
+            margin-left: 15%;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+<textarea name="" id="texta" cols="30" rows="10"></textarea>
+<h1 id="textlenght"></h1>
+<h1 id="textword"></h1>
+</div>
+</body>
+<script>
+    function textlen() {
+            const textarea = document.querySelector("#texta");
+            let counttext = 0;
+
+            textarea.addEventListener('keydown',function(e){
+                if(counttext == 100 && e.key != 'Backspace' || counttext == 0 && e.key == 'Backspace'){
+                    e.preventDefault();
+                    return;
+                }
+                if(e.key == 'Backspace'){
+
+                    counttext = counttext - 1;
+                    
+                    document.getElementById("textlenght").innerHTML = "text limit : " + counttext+"/100";
+
+
+                }
+                else{
+                    counttext = counttext + 1;
+                    document.getElementById("textlenght").innerHTML = "text limit : " + counttext+"/100";
+                }
+                
+            })
+
+            
+    }
+    textlen();
+</script>
+
+</html>
